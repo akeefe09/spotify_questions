@@ -20,3 +20,18 @@ function sortByStrings(s, t) {
 
 sortByStrings("weather", "therapyw");
 // sortByStrings("good", "odg");
+
+
+function decodeString(s) {
+  let reg = /(\d+)\[([a-z]*)\]/g;
+
+  while (s.includes("[")) {
+    s = s.replace(reg, (current, times, section) => (
+      section.repeat(times))
+    );
+  }
+  return s;
+}
+
+decodeString("4[ab]");
+// decodeString("2[b3[a]]");
