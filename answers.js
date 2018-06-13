@@ -18,7 +18,7 @@ function sortByStrings(s, t) {
   return result.join('');
 }
 
-sortByStrings("weather", "therapyw");
+// sortByStrings("weather", "therapyw");
 // sortByStrings("good", "odg");
 
 
@@ -33,5 +33,30 @@ function decodeString(s) {
   return s;
 }
 
-decodeString("4[ab]");
+// decodeString("4[ab]");
 // decodeString("2[b3[a]]");
+
+
+
+function changePossibilities(amount, denominations) {
+  let result = 0;
+
+  let changes = (i, ele) => {
+    let current = denominations[i];
+    if (i === 0) {
+      if (ele % current === 0) {
+        result += 1;
+      }
+      return;
+    }
+    while (ele >= 0) {
+      changes(i-1, ele);
+      ele -= current;
+    }
+  }
+  changes(denominations.length-1, amount);
+  return result;
+}
+
+// console.log(changePossibilities(4, [1,2,3,4]))
+// console.log(changePossibilities(4, [1,2,3,]))
